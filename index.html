@@ -3055,6 +3055,7 @@ function calculateFlexibleSchedule() {
     document.getElementById('calculatorResult').style.display = 'block';
 }       
 
+
     // تهيئة أولية
     document.addEventListener('DOMContentLoaded', function() {
         showContent(1);
@@ -3068,7 +3069,7 @@ function updateVisitorCounter() {
 
     // قراءة القيمة الحالية من قاعدة البيانات
     visitorCountRef.transaction((currentCount) => {
-        // إذا لم تكن هناك قيمة، ابدأ من 500000
+        // إذا لم تكن هناك قيمة، ابدأ من 50000
         if (currentCount === null) {
             return 500000;
         } else {
@@ -3088,9 +3089,8 @@ function updateVisitorCounter() {
         }
     });
 }
-</script>
 
-<script>
+// ===== إضافة كود منع النسخ =====
 // منع النقر بزر الفأرة الأيمن
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
@@ -3098,7 +3098,7 @@ document.addEventListener('contextmenu', function(e) {
     return false;
 });
 
-// منع اختصارات لوحة المفاتيح (نسخ، حفظ، عرض المصدر)
+// منع اختصارات لوحة المفاتيح
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
         e.preventDefault();
@@ -3112,29 +3112,35 @@ document.addEventListener('selectstart', function(e) {
     e.preventDefault();
     return false;
 });
+// ===== نهاية كود منع النسخ =====
+
 </script>
 
-<!-- تذييل حقوق الملكية وعداد الزوار في المنتصف -->
-<div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-top: 2px solid #3498db; clear: both;">
-    
-    <!-- حقوق الملكية -->
-    <div style="margin-bottom: 15px;">
-        <p style="margin: 5px 0; font-size: 14px; color: #2c3e50;">
-            <strong>جميع الحقوق محفوظة &copy; 2025 د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</strong>
-        </p>
-        <p style="margin: 5px 0; font-size: 12px; color: #666;">
-            هذا العمل محمي بموجب قوانين الملكية الفكرية. لا يسمح بنسخ أو إعادة نشر أي جزء دون إذن خطي مسبق.
-        </p>
-    </div>
-    
-    <!-- عداد الزوار -->
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
-        <div style="background: linear-gradient(135deg, #2c3e50, #4a69bd); color: white; padding: 8px 25px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px;">
-            <i class="fas fa-users"></i>
-            <span id="visits" style="font-size: 1.3rem; font-weight: bold;">500,000</span>
-        </div>
-    </div>
+<!-- ===== إضافة حقوق الملكية ===== -->
+<div style="text-align: center; margin-top: 30px; padding: 15px; background: #f8f9fa; border-top: 2px solid #3498db;">
+    <p style="margin: 5px 0; font-size: 14px; color: #2c3e50;">
+        <strong>جميع الحقوق محفوظة &copy; 2025 د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</strong>
+    </p>
+    <p style="margin: 5px 0; font-size: 12px; color: #666;">
+        هذا العمل محمي بموجب قوانين الملكية الفكرية. لا يسمح بنسخ أو إعادة نشر أي جزء دون إذن خطي مسبق.
+    </p>
 </div>
+<!-- ===== نهاية حقوق الملكية ===== -->
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
