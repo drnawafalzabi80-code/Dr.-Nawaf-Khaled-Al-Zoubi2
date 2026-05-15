@@ -2647,7 +2647,7 @@ const app = initializeApp(firebaseConfig);
         <h2 class="content-title">الإجازات الرسمية في الكويت العام 2026</h2>
         
         <div class="content-text">
-            <p>إعداد: د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</p>
+            <p>إعداد: د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين - حقوق الملكية محفوظة</p>
         </div>
 
         <table class="schedule-table">
@@ -2708,7 +2708,7 @@ const app = initializeApp(firebaseConfig);
             <!-- عداد الزوار -->
             <div class="visitor-counter">
                 <i class="fas fa-users"></i>
-                <span id="visits">500,000</span>
+                <span id="visits">500,050</span>
             </div>
 
     <script>
@@ -3055,53 +3055,44 @@ function calculateFlexibleSchedule() {
     document.getElementById('calculatorResult').style.display = 'block';
 }       
 
+
     // تهيئة أولية
     document.addEventListener('DOMContentLoaded', function() {
         showContent(1);
         toggleGenderField();
     });
 
-// عدّاد زوار يزيد مع كل زيارة - نسخة محسنة
+// عدّاد زوار يزيد مع كل زيارة
 function updateVisitorCounter() {
     const counterElement = document.getElementById('visits');
     if (!counterElement) return;
 
-    // قراءة القيمة الحالية من قاعدة البيانات كرقم
+    // قراءة القيمة الحالية من قاعدة البيانات
     visitorCountRef.transaction((currentCount) => {
-        // تحويل القيمة إلى رقم بشكل آمن، وأخذ 500,000 كقيمة أولية فقط إذا كانت القيمة الحالية غير صالحة
-        let currentNumber = Number(currentCount);
-        if (isNaN(currentNumber) || currentNumber === null) {
-            return 500000; // الرقم الأولي
+        // إذا لم تكن هناك قيمة، ابدأ من 50050
+        if (currentCount === null) {
+            return 50050;
         } else {
-            return currentNumber + 1; // زيادة الرقم
+            // قم بزيادة القيمة الحالية
+            return currentCount + 1;
         }
     }, (error, committed, snapshot) => {
         if (error) {
-            console.error('Transaction failed!', error);
-            counterElement.textContent = '500,000';
-        } else if (committed && snapshot) {
-            // التأكد من أن القيمة المعروضة هي رقم ومنسق بشكل جميل
-            const newCount = Number(snapshot.val());
-            counterElement.textContent = newCount.toLocaleString();
-            console.log('تم تحديث العداد إلى:', newCount);
+            console.error('Transaction failed abnormally!', error);
+            counterElement.textContent = '50,000'; // عرض القيمة الأساسية في حالة الفشل
+        } else if (!committed) {
+            console.log('Transaction aborted.');
+        } else {
+            // تحديث الواجهة بالقيمة الجديدة من Firebase
+            counterElement.textContent = snapshot.val().toLocaleString();
+            console.log('Visitor count updated:', snapshot.val());
         }
     });
 }
 </script>
-
-<!-- ===== حقوق الملكية (هذا HTML وليس JavaScript) ===== -->
-<div style="text-align: center; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-top: 2px solid #3498db;">
-    <p style="margin: 5px 0; font-size: 14px; color: #2c3e50;">
-        <strong>جميع الحقوق محفوظة &copy; 2025 د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</strong>
-    </p>
-    <p style="margin: 5px 0; font-size: 12px; color: #666;">
-        هذا العمل محمي بموجب قوانين الملكية الفكرية. لا يسمح بنسخ أو إعادة نشر أي جزء دون إذن خطي مسبق.
-    </p>
-</div>
-<!-- ===== نهاية حقوق الملكية ===== -->
-
 </body>
 </html>
+
 
 
 
