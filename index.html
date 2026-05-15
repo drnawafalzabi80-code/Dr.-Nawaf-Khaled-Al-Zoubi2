@@ -3078,11 +3078,10 @@ function updateVisitorCounter() {
     }, (error, committed, snapshot) => {
         if (error) {
             console.error('Transaction failed abnormally!', error);
-            counterElement.textContent = '500,000'; // عرض القيمة الأساسية في حالة الفشل
+            counterElement.textContent = '500,000';
         } else if (!committed) {
             console.log('Transaction aborted.');
         } else {
-            // تحديث الواجهة بالقيمة الجديدة من Firebase
             counterElement.textContent = snapshot.val().toLocaleString();
             console.log('Visitor count updated:', snapshot.val());
         }
@@ -3112,16 +3111,26 @@ document.addEventListener('selectstart', function(e) {
 
 </script>
 
-<!-- ===== حقوق الملكية ===== -->
-<div style="text-align: center; margin-top: 30px; padding: 15px; background: #f8f9fa; border-top: 2px solid #3498db;">
-    <p style="margin: 5px 0; font-size: 14px; color: #2c3e50;">
-        <strong>جميع الحقوق محفوظة &copy; 2025 د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</strong>
-    </p>
-    <p style="margin: 5px 0; font-size: 12px; color: #666;">
-        هذا العمل محمي بموجب قوانين الملكية الفكرية. لا يسمح بنسخ أو إعادة نشر أي جزء دون إذن خطي مسبق.
-    </p>
+<!-- ===== حقوق الملكية والعداد في المنتصف ===== -->
+<div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-top: 2px solid #3498db;">
+    
+    <!-- حقوق الملكية -->
+    <div style="margin-bottom: 15px;">
+        <p style="margin: 5px 0; font-size: 14px; color: #2c3e50;">
+            <strong>جميع الحقوق محفوظة &copy; 2025 د. نواف خالد الزعبي - مدرسة الشدادية المتوسطة بنين</strong>
+        </p>
+        <p style="margin: 5px 0; font-size: 12px; color: #666;">
+            هذا العمل محمي بموجب قوانين الملكية الفكرية. لا يسمح بنسخ أو إعادة نشر أي جزء دون إذن خطي مسبق.
+        </p>
+    </div>
+    
+    <!-- العداد الأصلي في المنتصف -->
+    <div class="visitor-counter" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, #2c3e50, #4a69bd); color: white; padding: 10px 25px; border-radius: 30px; margin: 0 auto;">
+        <i class="fas fa-users"></i>
+        <span id="visits">500,000</span>
+    </div>
 </div>
-<!-- ===== نهاية حقوق الملكية ===== -->
+<!-- ===== النهاية ===== -->
 
 </body>
 </html>
