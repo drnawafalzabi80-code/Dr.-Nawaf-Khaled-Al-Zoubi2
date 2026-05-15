@@ -3098,7 +3098,7 @@ document.addEventListener('contextmenu', function(e) {
     return false;
 });
 
-// منع اختصارات لوحة المفاتيح
+// منع اختصارات لوحة المفاتيح (نسخ، حفظ، عرض المصدر)
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
         e.preventDefault();
@@ -3113,7 +3113,6 @@ document.addEventListener('selectstart', function(e) {
     return false;
 });
 </script>
-
 </body>
 </html>
 
